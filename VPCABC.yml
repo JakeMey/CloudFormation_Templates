@@ -1,8 +1,8 @@
 #NV us-east
 #Creates 3 VPCs with 3 subnets in each
-#DNS Hostname enabled
 #Includes Internet Gateway attached to each VPC
 #Includes Route Table for each VPC with open route 0.0.0.0/0
+#To enable DNS Hostname: VPC > Actions > Edit VPC settings > Select 'Enable DNS hostnames'
 
 Resources:
   #Create 3 x VPCs
@@ -11,7 +11,6 @@ Resources:
     Properties:
       CidrBlock: 10.0.0.0/16
       EnableDnsSupport: true
-      EnableDnsHostname: true
       Tags:
         - Key: Name
           Value: VPCA
@@ -21,7 +20,6 @@ Resources:
     Properties:
       CidrBlock: 10.1.0.0/16
       EnableDnsSupport: true
-      EnableDnsHostname: true
       Tags:
         - Key: Name
           Value: VPCB
@@ -31,7 +29,6 @@ Resources:
     Properties:
       CidrBlock: 10.2.0.0/16
       EnableDnsSupport: true
-      EnableDnsHostname: true
       Tags:
         - Key: Name
           Value: VPCC
