@@ -62,7 +62,7 @@ Resources:
           Value: VPC-A NV1c
 
   # Subnets for VPC-B
-  Subnet-B-NV1a:
+  VPC-B NV1a:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPC-B
@@ -72,7 +72,7 @@ Resources:
         - Key: Name
           Value: VPC-B NV1a
 
-  Subnet-B-NV1b:
+  VPC-B NV1b:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPC-B
@@ -82,7 +82,7 @@ Resources:
         - Key: Name
           Value: VPC-B NV1b
 
-  Subnet-B-NV1c:
+  VPC-B NV1c:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPC-B
@@ -93,7 +93,7 @@ Resources:
           Value: VPC-B NV1c
 
   # Subnets for VPC-C
-  Subnet-C-NV1a:
+  VPC-C NV1a:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPC-C
@@ -103,7 +103,7 @@ Resources:
         - Key: Name
           Value: VPC-C NV1a
 
-  Subnet-C-NV1b:
+  VPC-C NV1b:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPC-C
@@ -113,7 +113,7 @@ Resources:
         - Key: Name
           Value: VPC-C NV1b
 
-  Subnet-C-NV1c:
+  VPC-C NV1c:
     Type: AWS::EC2::Subnet
     Properties:
       VpcId: !Ref VPC-C
