@@ -1,5 +1,5 @@
 Resources:
-  # VPCs
+  #Create 3 x VPCs
   VPC-A:
     Type: AWS::EC2::VPC
     Properties:
@@ -30,7 +30,9 @@ Resources:
         - Key: Name
           Value: VPC-C
 
-  # Subnets for VPC-A
+  #Create 3 Subnets for each VPC
+
+  #Subnets for VPC-A
   VPC-A NV1a:
     Type: AWS::EC2::Subnet
     Properties:
@@ -61,7 +63,7 @@ Resources:
         - Key: Name
           Value: VPC-A NV1c
 
-  # Subnets for VPC-B
+  #Subnets for VPC-B
   VPC-B NV1a:
     Type: AWS::EC2::Subnet
     Properties:
@@ -92,7 +94,7 @@ Resources:
         - Key: Name
           Value: VPC-B NV1c
 
-  # Subnets for VPC-C
+  #Subnets for VPC-C
   VPC-C NV1a:
     Type: AWS::EC2::Subnet
     Properties:
@@ -123,45 +125,46 @@ Resources:
         - Key: Name
           Value: VPC-C NV1c
 
-  # Internet Gateways
-  IGW-A:
+  #Create Internet Gateway for each VPC
+  VPC-A IGW:
     Type: AWS::EC2::InternetGateway
     Properties:
       Tags:
         - Key: Name
           Value: VPC-A IGW
 
-  IGW-B:
+  VPC-B IGW:
     Type: AWS::EC2::InternetGateway
     Properties:
       Tags:
         - Key: Name
           Value: VPC-B IGW
 
-  IGW-C:
+  VPC-C IGW:
     Type: AWS::EC2::InternetGateway
     Properties:
       Tags:
         - Key: Name
           Value: VPC-C IGW
 
+  #Attach Internet Gateways to coprresponding VPC
   Attach-IGW-A:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
       VpcId: !Ref VPC-A
-      InternetGatewayId: !Ref IGW-A
+      InternetGatewayId: !Ref VPC-A IGW
 
   Attach-IGW-B:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
       VpcId: !Ref VPC-B
-      InternetGatewayId: !Ref IGW-B
+      InternetGatewayId: !Ref VPC-B IGW
 
   Attach-IGW-C:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
       VpcId: !Ref VPC-C
-      InternetGatewayId: !Ref IGW-C
+      InternetGatewayId: !Ref VPC-C IGW
 
   # Route Tables
   RouteTable-A:
