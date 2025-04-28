@@ -1,3 +1,9 @@
+#NV us-east
+#Creates 3 VPCs with 3 subnets in each
+#DNS Hostname enabled
+#Includes Internet Gateway attached to each VPC
+#Includes Route Table for each VPC with open route 0.0.0.0/0
+
 Resources:
   #Create 3 x VPCs
   VPC-A:
@@ -147,7 +153,7 @@ Resources:
         - Key: Name
           Value: VPC-C IGW
 
-  #Attach Internet Gateways to coprresponding VPC
+  #Attach Internet Gateways to each coprresponding VPC
   Attach-IGW-A:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
@@ -166,7 +172,7 @@ Resources:
       VpcId: !Ref VPC-C
       InternetGatewayId: !Ref VPC-C IGW
 
-  # Route Tables
+  #Create Route Tables
   RouteTable-A:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -191,7 +197,7 @@ Resources:
         - Key: Name
           Value: VPC-C Route Table
 
-  # Routes
+  #Routes
   Route-A:
     Type: AWS::EC2::Route
     Properties:
