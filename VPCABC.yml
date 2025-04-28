@@ -6,7 +6,7 @@
 
 Resources:
   #Create 3 x VPCs
-  VPC-A:
+  VPCA:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: 10.0.0.0/16
@@ -14,9 +14,9 @@ Resources:
       EnableDnsHostname: true
       Tags:
         - Key: Name
-          Value: VPC-A
+          Value: VPCA
 
-  VPC-B:
+  VPCB:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: 10.1.0.0/16
@@ -24,9 +24,9 @@ Resources:
       EnableDnsHostname: true
       Tags:
         - Key: Name
-          Value: VPC-B
+          Value: VPCB
 
-  VPC-C:
+  VPCC:
     Type: AWS::EC2::VPC
     Properties:
       CidrBlock: 10.2.0.0/16
@@ -34,200 +34,200 @@ Resources:
       EnableDnsHostname: true
       Tags:
         - Key: Name
-          Value: VPC-C
+          Value: VPCC
 
   #Create 3 Subnets for each VPC
 
-  #Subnets for VPC-A
-  VPC-A NV1a:
+  #Subnets for VPCA
+  VPCANV1a:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VPC-A
+      VpcId: !Ref VPCA
       CidrBlock: 10.0.0.0/24
       AvailabilityZone: us-east-1a
       Tags:
         - Key: Name
-          Value: VPC-A NV1a
+          Value: VPCANV1a
 
-  VPC-A NV1b:
+  VPCANV1b:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VPC-A
+      VpcId: !Ref VPCA
       CidrBlock: 10.0.1.0/24
       AvailabilityZone: us-east-1b
       Tags:
         - Key: Name
-          Value: VPC-A NV1b
+          Value: VPCANV1b
 
-  VPC-A NV1c:
+  VPCANV1c:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VPC-A
+      VpcId: !Ref VPCA
       CidrBlock: 10.0.2.0/24
       AvailabilityZone: us-east-1c
       Tags:
         - Key: Name
-          Value: VPC-A NV1c
+          Value: VPCANV1c
 
   #Subnets for VPC-B
-  VPC-B NV1a:
+  VPCBNV1a:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VPC-B
+      VpcId: !Ref VPCB
       CidrBlock: 10.1.0.0/24
       AvailabilityZone: us-east-1a
       Tags:
         - Key: Name
-          Value: VPC-B NV1a
+          Value: VPCBNV1a
 
-  VPC-B NV1b:
+  VPCBNV1b:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VPC-B
+      VpcId: !Ref VPCB
       CidrBlock: 10.1.1.0/24
       AvailabilityZone: us-east-1b
       Tags:
         - Key: Name
-          Value: VPC-B NV1b
+          Value: VPCBNV1b
 
-  VPC-B NV1c:
+  VPCBNV1c:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VPC-B
+      VpcId: !Ref VPCB
       CidrBlock: 10.1.2.0/24
       AvailabilityZone: us-east-1c
       Tags:
         - Key: Name
-          Value: VPC-B NV1c
+          Value: VPCBNV1c
 
   #Subnets for VPC-C
-  VPC-C NV1a:
+  VPCCNV1a:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VPC-C
+      VpcId: !Ref VPCC
       CidrBlock: 10.2.0.0/24
       AvailabilityZone: us-east-1a
       Tags:
         - Key: Name
-          Value: VPC-C NV1a
+          Value: VPCCNV1a
 
-  VPC-C NV1b:
+  VPCCNV1b:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VPC-C
+      VpcId: !Ref VPCC
       CidrBlock: 10.2.1.0/24
       AvailabilityZone: us-east-1b
       Tags:
         - Key: Name
-          Value: VPC-C NV1b
+          Value: VPCCNV1b
 
-  VPC-C NV1c:
+  VPCCNV1c:
     Type: AWS::EC2::Subnet
     Properties:
-      VpcId: !Ref VPC-C
+      VpcId: !Ref VPCC
       CidrBlock: 10.2.2.0/24
       AvailabilityZone: us-east-1c
       Tags:
         - Key: Name
-          Value: VPC-C NV1c
+          Value: VPCCNV1c
 
   #Create Internet Gateway for each VPC
-  VPC-A IGW:
+  VPCAIGW:
     Type: AWS::EC2::InternetGateway
     Properties:
       Tags:
         - Key: Name
-          Value: VPC-A IGW
+          Value: VPCAIGW
 
-  VPC-B IGW:
+  VPCBIGW:
     Type: AWS::EC2::InternetGateway
     Properties:
       Tags:
         - Key: Name
-          Value: VPC-B IGW
+          Value: VPCBIGW
 
-  VPC-C IGW:
+  VPCCIGW:
     Type: AWS::EC2::InternetGateway
     Properties:
       Tags:
         - Key: Name
-          Value: VPC-C IGW
+          Value: VPCCIGW
 
   #Attach Internet Gateways to each coprresponding VPC
-  Attach-IGW-A:
+  AttachVPCAIGW:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
-      VpcId: !Ref VPC-A
-      InternetGatewayId: !Ref VPC-A IGW
+      VpcId: !Ref VPCA
+      InternetGatewayId: !Ref VPCAIGW
 
-  Attach-IGW-B:
+  AttachVPCBIGW:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
-      VpcId: !Ref VPC-B
-      InternetGatewayId: !Ref VPC-B IGW
+      VpcId: !Ref VPCB
+      InternetGatewayId: !Ref VPCBIGW
 
-  Attach-IGW-C:
+  AttachVPCCIGW:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
-      VpcId: !Ref VPC-C
-      InternetGatewayId: !Ref VPC-C IGW
+      VpcId: !Ref VPCC
+      InternetGatewayId: !Ref VPCCIGW
 
   #Create Route Tables
-  RouteTable-A:
+  VPCART:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: !Ref VPC-A
+      VpcId: !Ref VPCA
       Tags:
         - Key: Name
-          Value: VPC-A Route Table
+          Value: VPCART
 
-  RouteTable-B:
+  VPCBRT:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: !Ref VPC-B
+      VpcId: !Ref VPCB
       Tags:
         - Key: Name
-          Value: VPC-B Route Table
+          Value: VPCBRT
 
-  RouteTable-C:
+  VPCCRT:
     Type: AWS::EC2::RouteTable
     Properties:
-      VpcId: !Ref VPC-C
+      VpcId: !Ref VPCC
       Tags:
         - Key: Name
-          Value: VPC-C Route Table
+          Value: VPCCRT
 
   #Routes
-  Route-A:
+  RouteA:
     Type: AWS::EC2::Route
     Properties:
-      RouteTableId: !Ref RouteTable-A
+      RouteTableId: !Ref VPCART
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: !Ref IGW-A
+      GatewayId: !Ref VPCAIGW
 
-  Route-B:
+  RouteB:
     Type: AWS::EC2::Route
     Properties:
-      RouteTableId: !Ref RouteTable-B
+      RouteTableId: !Ref VPCBRT
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: !Ref IGW-B
+      GatewayId: !Ref VPCBIGW
 
-  Route-C:
+  RouteC:
     Type: AWS::EC2::Route
     Properties:
-      RouteTableId: !Ref RouteTable-C
+      RouteTableId: !Ref VPCCRT
       DestinationCidrBlock: 0.0.0.0/0
-      GatewayId: !Ref IGW-C
+      GatewayId: !Ref VPCCIGW
 
 Outputs:
-  VPC-A-ID:
+  VPCAID:
     Description: "VPC A ID"
-    Value: !Ref VPC-A
+    Value: !Ref VPCA
 
-  VPC-B-ID:
+  VPCBID:
     Description: "VPC B ID"
-    Value: !Ref VPC-B
+    Value: !Ref VPCB
 
-  VPC-C-ID:
+  VPCCID:
     Description: "VPC C ID"
-    Value: !Ref VPC-C
+    Value: !Ref VPCC
