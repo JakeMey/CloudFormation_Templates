@@ -2,7 +2,8 @@
 #Creates 3 VPCs with 3 subnets in each
 #Includes Internet Gateway attached to each VPC
 #Includes Route Table for each VPC with open route 0.0.0.0/0
-#To enable DNS Hostname: VPC > Actions > Edit VPC settings > Select 'Enable DNS hostnames'
+#Subnet Route Table Associations for VPCA,B,C included
+#To enable DNS Hostname after stack creation: VPC > Actions > Edit VPC settings > Select 'Enable DNS hostnames'
 
 Resources:
   #Create 3 x VPCs
@@ -215,6 +216,63 @@ Resources:
       RouteTableId: !Ref VPCCRT
       DestinationCidrBlock: 0.0.0.0/0
       GatewayId: !Ref VPCCIGW
+
+  #Subnet Route Table Associations for VPC A
+  SubnetRouteTableAssociationVPCANV1a:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref VPCANV1a
+      RouteTableId: !Ref VPCART
+
+  SubnetRouteTableAssociationVPCANV1b:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref VPCANV1b
+      RouteTableId: !Ref VPCART
+
+  SubnetRouteTableAssociationVPCANV1c:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref VPCANV1c
+      RouteTableId: !Ref VPCART
+
+  #Subnet Route Table Associations for VPC B
+  SubnetRouteTableAssociationVPCBNV1a:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref VPCBNV1a
+      RouteTableId: !Ref VPCBRT
+
+  SubnetRouteTableAssociationVPCBNV1b:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref VPCBNV1b
+      RouteTableId: !Ref VPCBRT
+
+  SubnetRouteTableAssociationVPCBNV1c:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref VPCBNV1c
+      RouteTableId: !Ref VPCBRT
+
+  #Subnet Route Table Associations for VPC C
+  SubnetRouteTableAssociationVPCCNV1a:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref VPCCNV1a
+      RouteTableId: !Ref VPCCRT
+
+  SubnetRouteTableAssociationVPCCNV1b:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref VPCCNV1b
+      RouteTableId: !Ref VPCCRT
+
+  SubnetRouteTableAssociationVPCCNV1c:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref VPCCNV1c
+      RouteTableId: !Ref VPCCRT
 
 Outputs:
   VPCAID:
